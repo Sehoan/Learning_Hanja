@@ -1,4 +1,4 @@
-# Spring 1
+# Sprint 1
 ## Things to Do
 - [ ] Write a project proposal
     - Explain our project concept
