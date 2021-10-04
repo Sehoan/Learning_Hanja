@@ -1,0 +1,76 @@
+body {
+  font-family: 'Playfair Display', serif;
+}
+:root {
+  --main-theme: rgb(18, 75, 142);
+  --sub-theme: rgb(52, 98, 151, 0.6);
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 2rem 1.5rem;
+}
+header i {
+  color: var(--sub-theme);
+  cursor: pointer;
+}
+header i:hover {
+  color: var(--main-theme);
+}
+header p {
+  justify-self: end;
+  color: var(--sub-theme);
+  font-size: 1.5rem;
+}
+header span {
+  cursor: pointer;
+}
+header span:hover {
+  color: var(--main-theme);
+}
+.active-lang {
+  color: var(--main-theme);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+section p {
+  color: var(--sub-theme);
+}
+section #subheading {
+  font-size: 2rem;
+  letter-spacing: 2.2rem;
+}
+section h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--main-theme);
+}
+section img {
+  margin: 4rem;
+  width: 366px;
+}
+section #welcome-msg {
+  font-size: 1.5rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  background-color: rgb(4, 61, 129, 0.54);
+  height: 70px;
+  padding: 1rem;
+}
+footer div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
