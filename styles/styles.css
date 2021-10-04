@@ -1,3 +1,6 @@
+a {
+  text-decoration: none;
+}
 body {
   font-family: 'Playfair Display', serif;
 }
@@ -31,6 +34,7 @@ header span:hover {
 }
 .active-lang {
   color: var(--main-theme);
+  font-weight: bold;
 }
 
 section {
@@ -47,7 +51,7 @@ section #subheading {
   font-size: 2rem;
   letter-spacing: 2.2rem;
 }
-section h1 {
+section h1 a {
   font-size: 5rem;
   font-weight: bold;
   color: var(--main-theme);
@@ -67,10 +71,31 @@ footer {
   color: white;
   background-color: rgb(4, 61, 129, 0.54);
   height: 70px;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 footer div {
   display: flex;
   align-items: center;
   height: 100%;
+}
+
+/*Search Page specific*/
+#search-bar {
+  width: 60%;
+  margin: 4rem 0 6rem 0;
+}
+#search-bar i {
+  position: relative;
+  left: 35px;
+  color: var(--main-theme);
+}
+#search-bar input {
+  border: solid 2px var(--main-theme);
+  border-radius: 7px;
+  width: 90%;
+  height: 3.5rem;
+  padding: 10px;
+  padding-left: 40px;
+  font-size: 1.3rem;
+  color: var(--sub-theme);
 }
