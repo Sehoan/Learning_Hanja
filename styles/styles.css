@@ -45,10 +45,17 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 /*---------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------*/
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
 a {
   text-decoration: none;
   color: black;
@@ -145,7 +152,6 @@ section #welcome-msg {
   font-size: 1.5rem;
 }
 
-
 footer {
   position: fixed;
   bottom: 0;
@@ -172,21 +178,23 @@ footer div {
 #search-bar {
   width: 60%;
   margin: 4rem 0 6rem 0;
+  border: solid 2px var(--main-theme);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 #search-bar i {
-  position: relative;
-  left: 35px;
   color: var(--main-theme);
+  margin-left: 20px;
+  margin-right: 10px;
 }
 #search-bar input {
-  border: solid 2px var(--main-theme);
-  border-radius: 7px;
-  width: 90%;
+  border: none;
   height: 3.5rem;
   padding: 10px;
-  padding-left: 40px;
   font-size: 1.3rem;
-  color: var(--sub-theme);
+  color: var(--main-theme);
 }
 
 .left-col {
@@ -205,9 +213,6 @@ footer div {
   font-size: 7rem;
   font-weight: bold;
   color: var(--main-theme);
-}
-.left-col{
-  height: auto;
 }
 .inside-row{
   margin-top: 10px;
@@ -240,7 +245,7 @@ footer div {
   text-align: center;
 }
 
-#result-header div:nth-child(4) {
+#result-header p:nth-child(4) {
   padding-bottom: 10px;
 }
 
@@ -263,4 +268,69 @@ footer div {
 }
 #result-header input {
   height: 2.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  header p {
+    font-size: 1rem;
+  }
+  #result-header {
+    grid-template-columns: 1.5fr 4fr 2fr;
+  }
+  #result-header div:nth-child(2) {
+    display: none;
+  }
+  section {
+    margin-top: 1rem;
+  }
+  section #subheading {
+    font-size: 2rem;
+    letter-spacing: 10px;
+  }
+  section h1 a {
+    font-size: 3rem;
+  }
+  section img {
+    width: 300px;
+  }
+  section #welcome-msg {
+    font-size: 1rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  .search-entry {
+    width: 95%;
+  }
+  .left-col {
+    text-align: center;
+    padding: 1rem 1rem 0 0;
+  }
+  .kanji{
+    font-size: 5.5rem;
+  }
+  .result-text {
+    font-size: 1rem;
+  }
+  #search-bar {
+    justify-self: end;
+    width: 90%;
+    height: 2rem;
+    margin: 0;
+  }
+  #search-bar i {
+    color: var(--main-theme);
+    margin: 0;
+    margin-left: 5px;
+  }
+  #search-bar input {
+    width: 100%;
+    height: 1rem;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    color: var(--main-theme);
+  }
+  footer {
+    font-size: 0.8rem;
+  }
 }
