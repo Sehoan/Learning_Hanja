@@ -44,8 +44,10 @@
         </h1>
       </div>
       <div id="search-bar">
-        <a href="search_results.html" title="search"><i class="fa fa-search fa-lg"></i></a>        
-        <input type="text" placeholder="학">
+        <form action="search_result.php" method="post">
+            <i class="fa fa-search fa-lg"></i>        
+            <input type="text" name="keyword" placeholder="Search..." value="<?=$keyword?>">
+        </form>
       </div>
       <p>
       <span class="active-lang">EN</span> |

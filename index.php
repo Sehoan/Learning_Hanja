@@ -12,6 +12,7 @@ session_start();
 // Parse the URL
 $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = str_replace("/hanja_interpreter/", "", $path);
+$path = str_replace(".php", "", $path);
 $parts = explode("/", $path);
 
 // path has a form "/account/login", "search/search_form", "quiz/quiz_form"
@@ -28,5 +29,9 @@ if (!isset($_SESSION["username"])) {
     $parts[1] = "login";
 }
 
+if (isset($_GET["page"])) {
+    $parts[0] = $_GET["page"];
+    $parts[1] = $_GET["action"];
+}
 $main = new Main();
 $main->run($parts);

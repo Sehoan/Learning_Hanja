@@ -24,14 +24,14 @@
     <header>
       <div id="header-logo">
         <i class="fa fa-user-circle fa-2x"></i>
-        <p>Ryu</p>
+        <p><?=$_SESSION["username"]?></p>
         <!--Hidden menu pop up-->
         <div id="menus">
           <ul>
             <li><a>Account</a></li>
             <li><a>My Wordbook</a></li>
             <li><a>Recent Search</a></li>
-            <li><a>Log Out</a></li>
+            <li><a href="../index.php?page=account&action=logout">Log Out</a></li>
           </ul>
         </div>
       </div>
@@ -46,8 +46,10 @@
       <h1><a href="../index.html">英日韓 漢字 辞典</a></h1>
 
       <div id="search-bar">
-        <a href="search_results.html" title="search"><i class="fa fa-search fa-lg"></i></a>        
-        <input type="text" placeholder="Search...">
+        <form action="search_result.php" method="post">
+            <i class="fa fa-search fa-lg"></i>        
+            <input type="text" name="keyword" placeholder="Search...">
+        </form>
       </div>
       <p id="welcome-msg">Search for any specific Chinese character or derived vocabulary!</p>
     </section>

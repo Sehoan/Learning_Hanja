@@ -28,6 +28,7 @@ class Search {
     }
 
     public function searchResult() {
+        $keyword = $_POST["keyword"];
         include "views/search_result.php";
     }
 }
