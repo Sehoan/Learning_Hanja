@@ -13,15 +13,15 @@
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="<?=$this->base_url?>/styles/styles.css">
+        <link rel="stylesheet" href="<?=$this->base_url?>/styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/0604459c37.js"></script>
-  </head>
+    </head>
   <body>
     <!--Top Navigation / Header bar-->
-    <header>
+    <header id="result-header">
       <div id="header-logo">
         <i class="fa fa-user-circle fa-2x"></i>
         <p><?=$_SESSION["username"]?></p>
@@ -35,6 +35,21 @@
           </ul>
         </div>
       </div>
+      <!--Extra elements in header-->
+      <div>
+        <p id="subheading">EN に한자じてん</p>
+        <h1 id="heading" class="text-center">
+          <a href="<?=$this->base_url?>">
+            英日韓 漢字 辞典
+          </a>
+        </h1>
+      </div>
+      <div id="search-bar">
+      <form action="<?=$this->base_url?>/search/search_result/" method="post">
+            <i class="fa fa-search fa-lg"></i>
+            <input type="text" name="keyword" placeholder="Search...">
+        </form>
+      </div>
       <p>
       <span class="active-lang">EN</span> |
       <span>JP</span> |
@@ -42,16 +57,29 @@
       </p>
     </header>
     <!--Main Content-->
-    <section> <p id="subheading">EN に한자じてん</p>
-      <h1><a href="<?=$this->base_url?>">英日韓 漢字 辞典</a></h1>
-
-      <div id="search-bar">
-      <form action="<?=$this->base_url?>/search/search_result/" method="post">
-            <i class="fa fa-search fa-lg"></i>
-            <input type="text" name="keyword" placeholder="Search...">
-        </form>
+    <section class="px-5">
+      <div class="row w-100">
+        <p class="col-8 text-start fs-3" style="border-left: solid 5px var(--sub-theme);">Recent Searches</p>
       </div>
-      <p id="welcome-msg">Search for any specific Chinese character or derived vocabulary!</p>
+      <div id="recent_searches" class="w-100 mt-5">
+        //<?php
+          if(array_key_exists('recent',$_COOKIE)){
+            $cookie = $_COOKIE['recent'];
+            $cookie = unserialize($cookie);
+          } else{
+            $cookie = array()
+          }
+          foreach ($cookie as $x) {
+            $x;
+          ?>
+          <p><?=$error_msg?></p>
+          <div class="letter-card">
+            <p >     <?= $x?>      </p>
+          </div>
+        <?php
+        //  }
+        ?>
+      </div>
     </section>
     <!--Footer-->
     <footer>

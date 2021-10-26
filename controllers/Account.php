@@ -41,7 +41,7 @@ class Account {
       $data = $this->db->query("select * from user where username = ?;", "s", $_POST["username"]);
       if ($data === false) { // query failed
         $error_msg = "Error cheking for user";
-      } else if (!empty($data)) { 
+      } else if (!empty($data)) {
         // query succeeded and an existing user's found, validate password
         if (password_verify($_POST["password"], $data[0]["password"])) {
           $_SESSION["username"] = $data[0]["username"];
@@ -53,33 +53,39 @@ class Account {
         }
       } else {
         // query succeeded but no user's found, sign up a new user
-        $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-        $insert = $this->db->query("insert into user (username, password) values (?, ?);", "ss", $_POST["username"], $hash);
-        if ($insert === false) {
-          $error_msg = "Error creating new user";
-        } 
+        $password = $_POST['password'];
+        if(preg_match( '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/', $password)){
+          $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+          $insert = $this->db->query("insert into user (username, password) values (?, ?);", "ss", $_POST["username"], $hash);
+          if ($insert === false) {
+            $error_msg = "Error creating new user";
+          }
 
-        // create session obejcts to maintain user's state in the site
-        $_SESSION["username"] = $_POST["username"];
-        $id = $this->db->query("select max(id) from user");
-        $id = $id[0]["max(id)"];
-        $_SESSION["user_id"] = $id;
-        header("Location: {$this->base_url}/search/search_form");
-        return;
+          // create session obejcts to maintain user's state in the site
+          $_SESSION["username"] = $_POST["username"];
+          $id = $this->db->query("select max(id) from user");
+          $id = $id[0]["max(id)"];
+          $_SESSION["user_id"] = $id;
+          header("Location: {$this->base_url}/search/search_form");
+          return;
+        } else{
+
+          $error_msg = "Your password must have at least one upper and lowercase letter, one number, and one special character ";
+        }
       }
     }
 
     include "views/login.php";
   }
 
-  private function logout() {          
+  private function logout() {
     session_start(); // join existing session
     session_destroy(); // destroy existing session
     header("Location: {$this->base_url}/"); // redirect to home page
   }
 
   public function recentSearch() {
-
+    include ('view/recent_search.php');
   }
 
   public function wordbook() {
@@ -95,8 +101,8 @@ class Account {
     }
     // retrieve a list of letters in the user's wordbook
     $userWordbook = $this->db->query(
-      "select * from favorites 
-      inner join kanji on kanji_id=id 
+      "select * from favorites
+      inner join kanji on kanji_id=id
       where user_id={$_SESSION["user_id"]};");
 
     if (isset($_GET["command"]) && $_GET["command"] == "export") {
