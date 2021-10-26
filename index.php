@@ -4,8 +4,6 @@ spl_autoload_register(function($classname) {
   include "controllers/$classname.php";
 });
 
-
-define('ROOT_PATH', dirname(__DIR__) . '/hanja_interpreter/');
 // Join session or start one
 session_start();
 

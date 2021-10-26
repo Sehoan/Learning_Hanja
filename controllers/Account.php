@@ -40,6 +40,7 @@ class Account {
         // validate the user's password
         if (password_verify($_POST["password"], $data[0]["password"])) {
           $_SESSION["username"] = $data[0]["username"];
+          $_SESSION["user_id"] = $data[0]["id"];
           header("Location: {$this->base_url}/search/search_form");
           return;
         } else {
@@ -53,6 +54,8 @@ class Account {
         } 
 
         $_SESSION["username"] = $_POST["username"];
+        $id = $this->db->query("select max(id) from user");
+        $_SESSION["user_id"] = $_POST["user_id"];
         header("Location: {$this->base_url}/search/search_form");
         return;
       }
@@ -70,6 +73,10 @@ class Account {
 
   }
   public function wordbook() {
+    if (isset($_POST["user_id"]) && isset($_POST["kanji_id"])) {
+      echo $_POST["user_id"];
+      echo $_POST["kanji_id"];
+    }
     include("views/wordbook.php");
   }
 
