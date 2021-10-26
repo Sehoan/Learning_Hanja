@@ -3,10 +3,12 @@
 class Account {
 
   private $db;
-  private $base_url = "/hanja_interpreter";
+  private $base_url;
 
   public function __construct() {
     $this->db = new Database();
+    $this->config = new Config();
+    $this->base_url = $this->config->getURL();
   }
 
   public function run($action) {
@@ -67,7 +69,7 @@ class Account {
 
   private function logout() {          
     session_destroy();
-    header("Location: /hanja_interpreter/");
+    header("Location: {$this->base_url}/");
   }
 
   public function recentSearch() {
