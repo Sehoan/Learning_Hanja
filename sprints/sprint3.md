@@ -6,7 +6,7 @@
     - [x] Use expressions
     - [x] Use control structures
     - [x] Use predefined/standard/built-in functions
-- [ ] Implement at least two user-defined functions
+- [x] Implement at least two user-defined functions
 - Use the following implicit objects
     - [x] ```$_GET``` - for sending and handling HTTP GET requests
     - [x] ```$_POST``` - for sending and handling HTTP POST requests
@@ -16,24 +16,24 @@
     - [x] Provide user-appropriate error messages
     - [ ] Use at least one regular expression
 - [x] Implement form submission and handling
-- [ ] Support multiple users, using a server-side ```$_SESSION``` object to 
+- [x] Support multiple users, using a server-side ```$_SESSION``` object to 
 maintain state of the application on the server
 - Use at least one of the following state maintenance mechanisms.
     - [ ] ```$_COOKIE``` - stores information on the client
-    - [x] URL rewriting *logout href?
-    - [ ] Hidden form fields
+    - [ ] URL rewriting
+    - [x] Hidden form fields
 - Support multiple sessions, using a relational database to persist data.
-    - [ ] Returning users must be able to access their existing data, records, or
+    - [x] Returning users must be able to access their existing data, records, or
     previous states; (*recent searches, my wordbook, language preferences,
     profile, etc)
     - [x] Users must be able to retrieve and view data previously stored in a 
     databse and use them in some ways to serve some purposes
-    - [ ] Users must be able to add data to the database; i.e., data being stored
+    - [x] Users must be able to add data to the database; i.e., data being stored
     must reflect the user inputs and / or the application states. (*adding favorite
     character to my wordbook)
-    - [ ] Users must be able to update and / or delete data stored in the database
+    - [x] Users must be able to update and / or delete data stored in the database
     (*deleting saved character from my wordboook)
-- [ ] Implement at least one query that returns JSON instead of HTML
+- [x] Implement at least one query that returns JSON instead of HTML
     * Create a JSON report of my wordbook
 - Use good coding style
  - [ ] Make identifier names understandable 
@@ -49,13 +49,12 @@ maintain state of the application on the server
 - [x] Search and Search Result
     - [x] search form
     - [x] display search result
-- [ ] My Wordbook
-    - [ ] enable add button in search result page to actually add a character
+- [x] My Wordbook
+    - [x] enable add button in search result page to actually add a character
     to the user's "my wordbook"
-    - [ ] display my wordbook page
-    - [ ] enable deleting a character from my wordbook page
-    - [ ] enable add button in the page to redirect to search form page
-    - [ ] add a new "export to JSON" button to convert my wordbook into JSON report
+    - [x] display my wordbook page
+    - [x] enable deleting a character from my wordbook page
+    - [x] add a new "export to JSON" button to convert my wordbook into JSON report
 - [ ] Username and Password validation (using regular expression)
     - [ ] username validataion (what are the rules?)
     - [ ] password validataion (what are the rules?)

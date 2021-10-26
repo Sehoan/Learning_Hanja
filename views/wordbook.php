@@ -57,42 +57,35 @@
       </p>
     </header>
     <!--Main Content-->
-    <section>
-    <?php
-    if (empty($result)) {
-      echo "empty";
-    } else {
-      foreach($result as $row) {
-    ?>
-    <div class="row search-entry">
-        <div class="col-3 left-col">
-            <h1 class="kanji"><?=$row["literal"]?> </h1>
-        </div>
-        <div class="col-9 right-col">
-          <div class="row inside-row">
-            <div class="col-8">
-            <p class="result-text"><?=$row["stroke_count"]?> strokes</p>
-            </div>
-          </div>
-          <div class="row inside-row">
-          <p class="result-text"><?=$row["meaning_en"]?></p>
-          </div>
-          <div class="row inside-row">
-            <div class="col-4">
-            <p class="result-text"> 日：<?=$row["kun_yomi"]?></p>
-            </div>
-            <div class="col-4">
-            <p class="result-text">한: <?=$row["meaning_kr"]?></p>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-primary" name="button"> Add</button>
-            </div>
-          </div>
-        </div>
+    <section class="px-5">
+      <div class="row w-100">
+        <p class="col-8 text-start fs-3" style="border-left: solid 5px var(--sub-theme);">My Wordbook</p>
+          
+          <p class="col-2 text-end fs-3">
+            <a href="<?=$this->base_url?>/account/wordbook?command=export" style="color: var(--optional-theme)">
+              Export to JSON ➜
+            </a>
+          </p>
+        <p class="col-2 text-end fs-3" style="color: var(--highlight-theme)">Create Quiz ➜</p>
       </div>
-    <?php
-      }}
-    ?>
+      <div id="wordbook" class="w-100 mt-5">
+        <?php
+          foreach ($userWordbook as $row) {
+            $literal = $row["literal"];
+            $meaning = $row["meaning_en"];
+        ?>
+          <p><?=$error_msg?></p>
+          <div class="letter-card">
+            <a href="<?=$this->base_url?>/account/wordbook?command=delete&kanji_id=<?=$row["kanji_id"]?>">
+              <i class="fa fa-trash fa-2x"></i>
+            </a>
+            <p><?=$literal?></p>
+            <p><?=$meaning?></p>
+          </div>
+        <?php
+          }
+        ?>
+      </div>
     </section>
     <!--Footer-->
     <footer>

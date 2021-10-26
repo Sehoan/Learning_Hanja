@@ -31,7 +31,7 @@
             <li><a>Account</a></li>
             <li><a href="<?=$this->base_url?>/index.php?page=account&action=wordbook">My Wordbook</a></li>
             <li><a>Recent Search</a></li>
-            <li><a>Log Out</a></li>
+            <li><a href="<?=$this->base_url?>/account/logout">Log Out</a></li>
           </ul>
         </div>
       </div>
@@ -84,10 +84,18 @@
             <p class="result-text">한: <?=$row["meaning_kr"]?></p>
             </div>
             <div class="col-4">
-              <form action="<?=$this->base_url?>/account/wordbook" method="POST">
+              <form action="<?=$this->base_url?>/search/search_result" method="POST">
                 <input type="hidden" name="user_id" value="<?=$_SESSION["user_id"]?>">
                 <input type="hidden" name="kanji_id" value="<?=$row["kanji_id"]?>">
-                <button type="submit" class="btn btn-primary" name="button"> Add</button>
+                <input type="hidden" name="keyword" value="<?=$keyword?>">
+                <?php
+                  if (in_array($row["kanji_id"], $addedLetters)) {
+                    echo '<button type="submit" disabled class="btn btn-secondary" name="button">Added</button>';
+                  } else {
+                    echo '<button type="submit" class="btn btn-primary" name="button">Add</button>';
+                  }
+                ?>
+                <p><?=$error_msg?></p>
               </form>
             </div>
           </div>
