@@ -20,7 +20,11 @@ class Main {
                 $this->quiz($parts[1]);
                 break;
             default:
-                $this->account("login");
+                if (isset($_SESSION["username"])) {
+                  $this->search("form");
+                } else {
+                  $this->account("login");
+                }
         }
             
     }

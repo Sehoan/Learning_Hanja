@@ -1,18 +1,15 @@
 <?php
 
 spl_autoload_register(function($classname) {
-    include "controllers/$classname.php";
+  include "controllers/$classname.php";
 });
 
-
-define('ROOT_PATH', dirname(__DIR__) . '/hanja_interpreter/');
 // Join session or start one
 session_start();
 
 // Parse the URL
 $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $path = str_replace("/hanja_interpreter/", "", $path);
-$path = str_replace(".php", "", $path);
 $parts = explode("/", $path);
 
 // path has a form "/account/login", "search/search_form", "quiz/quiz_form"
@@ -25,13 +22,13 @@ $parts = explode("/", $path);
 // so we should send them over to log in first before doing
 // anything else!
 if (!isset($_SESSION["username"])) {
-    $parts[0] = "account";
-    $parts[1] = "login";
+  $parts[0] = "account";
+  $parts[1] = "login";
 }
 
 if (isset($_GET["page"])) {
-    $parts[0] = $_GET["page"];
-    $parts[1] = $_GET["action"];
+  $parts[0] = $_GET["page"];
+  $parts[1] = $_GET["action"];
 }
 $main = new Main();
 $main->run($parts);

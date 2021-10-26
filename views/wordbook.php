@@ -13,15 +13,15 @@
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="<?=$this->base_url?>/styles/styles.css">
+        <link rel="stylesheet" href="<?=$this->base_url?>/styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/0604459c37.js"></script>
-  </head>
+    </head>
   <body>
     <!--Top Navigation / Header bar-->
-    <header>
+    <header id="result-header">
       <div id="header-logo">
         <i class="fa fa-user-circle fa-2x"></i>
         <p><?=$_SESSION["username"]?></p>
@@ -35,6 +35,21 @@
           </ul>
         </div>
       </div>
+      <!--Extra elements in header-->
+      <div>
+        <p id="subheading">EN に한자じてん</p>
+        <h1 id="heading" class="text-center">
+          <a href="<?=$this->base_url?>">
+            英日韓 漢字 辞典
+          </a>
+        </h1>
+      </div>
+      <div id="search-bar">
+      <form action="<?=$this->base_url?>/search/search_result/" method="post">
+            <i class="fa fa-search fa-lg"></i>        
+            <input type="text" name="keyword" placeholder="Search...">
+        </form>
+      </div>
       <p>
       <span class="active-lang">EN</span> |
       <span>JP</span> |
@@ -42,16 +57,42 @@
       </p>
     </header>
     <!--Main Content-->
-    <section> <p id="subheading">EN に한자じてん</p>
-      <h1><a href="<?=$this->base_url?>">英日韓 漢字 辞典</a></h1>
-
-      <div id="search-bar">
-      <form action="<?=$this->base_url?>/search/search_result/" method="post">
-            <i class="fa fa-search fa-lg"></i>        
-            <input type="text" name="keyword" placeholder="Search...">
-        </form>
+    <section>
+    <?php
+    if (empty($result)) {
+      echo "empty";
+    } else {
+      foreach($result as $row) {
+    ?>
+    <div class="row search-entry">
+        <div class="col-3 left-col">
+            <h1 class="kanji"><?=$row["literal"]?> </h1>
+        </div>
+        <div class="col-9 right-col">
+          <div class="row inside-row">
+            <div class="col-8">
+            <p class="result-text"><?=$row["stroke_count"]?> strokes</p>
+            </div>
+          </div>
+          <div class="row inside-row">
+          <p class="result-text"><?=$row["meaning_en"]?></p>
+          </div>
+          <div class="row inside-row">
+            <div class="col-4">
+            <p class="result-text"> 日：<?=$row["kun_yomi"]?></p>
+            </div>
+            <div class="col-4">
+            <p class="result-text">한: <?=$row["meaning_kr"]?></p>
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn btn-primary" name="button"> Add</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <p id="welcome-msg">Search for any specific Chinese character or derived vocabulary!</p>
+    <?php
+      }}
+    ?>
     </section>
     <!--Footer-->
     <footer>

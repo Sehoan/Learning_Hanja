@@ -34,6 +34,14 @@ $db->query("create table hanja(
 );"
 );
 
+$db->query("drop table if exists favorites");
+$db->query("create table favorites(
+  user_id int not null,
+  kanji_id int not null,
+  primary key (user_id, kanji_id)
+);"
+);
+
 $data = json_decode(file_get_contents("db_files/kanji.txt"),true);
 $hanja = json_decode(file_get_contents("db_files/hanja.json"),true);
 
