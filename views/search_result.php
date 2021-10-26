@@ -24,7 +24,7 @@
     <header id="result-header">
       <div id="header-logo">
         <i class="fa fa-user-circle fa-2x"></i>
-        <p>Ryu</p>
+        <p><?=$_SESSION["username"]?></p>
         <!--Hidden menu pop up-->
         <div id="menus">
           <ul>
@@ -84,7 +84,11 @@
             <p class="result-text">한: <?=$row["meaning_kr"]?></p>
             </div>
             <div class="col-4">
-              <button type="button" class="btn btn-primary" name="button"> Add</button>
+              <form action="<?=$this->base_url?>/account/wordbook" method="POST">
+                <input type="hidden" name="user_id" value="<?=$_SESSION["user_id"]?>">
+                <input type="hidden" name="kanji_id" value="<?=$row["kanji_id"]?>">
+                <button type="submit" class="btn btn-primary" name="button"> Add</button>
+              </form>
             </div>
           </div>
         </div>

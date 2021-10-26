@@ -5,7 +5,7 @@ class Database {
     private $mysqli;
 
     public function __construct() {
-        include(ROOT_PATH.'database_connection.php');
+        include('./database_connection.php');
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $this->mysqli = new mysqli($dbserver, $dbuser, $dbpass, $dbdatabase);
     }
