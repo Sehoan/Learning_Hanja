@@ -3,6 +3,8 @@
 class Search {
 
     private $db;
+
+    private $base_url = "/hanja_interpreter";
     
     public function __construct() {
         $this->db = new Database();

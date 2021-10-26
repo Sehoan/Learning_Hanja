@@ -13,7 +13,7 @@
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="<?=$this->base_url?>/styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
@@ -29,9 +29,9 @@
         <div id="menus">
           <ul>
             <li><a>Account</a></li>
-            <li><a>My Wordbook</a></li>
+            <li><a href="<?=$this->base_url?>/account/wordbook">My Wordbook</a></li>
             <li><a>Recent Search</a></li>
-            <li><a href="../index.php?page=account&action=logout">Log Out</a></li>
+            <li><a href="<?=$this->base_url?>/account/logout">Log Out</a></li>
           </ul>
         </div>
       </div>
@@ -43,10 +43,10 @@
     </header>
     <!--Main Content-->
     <section> <p id="subheading">EN に한자じてん</p>
-      <h1><a href="../index.html">英日韓 漢字 辞典</a></h1>
+      <h1><a href="<?=$this->base_url?>">英日韓 漢字 辞典</a></h1>
 
       <div id="search-bar">
-        <form action="search_result.php" method="post">
+      <form action="<?=$this->base_url?>/search/search_result/" method="post">
             <i class="fa fa-search fa-lg"></i>        
             <input type="text" name="keyword" placeholder="Search...">
         </form>
