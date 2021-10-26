@@ -1,4 +1,8 @@
 <?php
+/*
+ * Author(s): Sehoan Choi (sc8zt)
+ */
+
 $dbserver = "localhost";
 $dbuser = "sc8zt";
 $dbpass = "0UczDBoPxBvX";

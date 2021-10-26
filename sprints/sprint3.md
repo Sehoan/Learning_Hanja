@@ -36,12 +36,12 @@ maintain state of the application on the server
 - [x] Implement at least one query that returns JSON instead of HTML
     * Create a JSON report of my wordbook
 - Use good coding style
- - [ ] Make identifier names understandable 
- - [ ] Use proper and consistent indentation
- - [ ] Use comments
- - [ ] Use new lines in your output ```\n```
+ - [x] Make identifier names understandable 
+ - [x] Use proper and consistent indentation
+ - [x] Use comments
+ - [x] Use new lines in your output ```\n```
  - Deploy your app (.htm, .css, .php) to our cs4640 server.
-    - [ ] Include the URL for your app in a comment in the header of your 
+    - [x] Include the URL for your app in a comment in the header of your 
     ```index.html``` or ```index.php``` file.
 
 ---

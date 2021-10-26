@@ -1,4 +1,7 @@
 <?php
+/*
+ * Author(s): Sehoan Choi (sc8zt)
+ */
 
 class Config {
   public $compID;
@@ -6,7 +9,7 @@ class Config {
 
   public function __construct() {
     $this->compID = "sc8zt";
-    $this->project = "hanja_interpreter";
+    $this->project = "learning_hanja";
   }
 
   public function getURL() {

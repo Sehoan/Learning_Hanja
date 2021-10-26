@@ -1,4 +1,7 @@
 <?php
+/*
+ * Author(s): Sehoan Choi (sc8zt), Ryu Patterson (rjp5cc)
+ */
 
 include('./database_connection.php');
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);

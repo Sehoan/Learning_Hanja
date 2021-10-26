@@ -1,4 +1,8 @@
 <?php
+/*
+ * Author(s): Sehoan Choi (sc8zt), Ryu Patterson (rjp5cc)
+ */
+
 class Search {
 
   private $db;
