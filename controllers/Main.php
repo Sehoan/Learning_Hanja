@@ -8,18 +8,19 @@ class Main {
     
     public function run($parts) {
         $page = $parts[0];
-        $action = $parts[1];
         
         switch($page) {
             case "account":
-                $this->account($action);
+                $this->account($parts[1]);
                 break;
             case "search":
-                $this->search($action);
+                $this->search($parts[1]);
+                break;
+            case "quiz":
+                $this->quiz($parts[1]);
                 break;
             default:
-                $this->quiz($action);
-                break;
+                $this->account("login");
         }
             
     }

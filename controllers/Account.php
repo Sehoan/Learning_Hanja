@@ -3,6 +3,7 @@
 class Account {
 
     private $db;
+    private $base_url = "/hanja_interpreter";
 
     public function __construct() {
         $this->db = new Database();
@@ -25,7 +26,6 @@ class Account {
                 break;
             default:
                 $this->login();
-                break;
         }
 
     }
@@ -40,7 +40,7 @@ class Account {
                 // validate the user's password
                 if (password_verify($_POST["password"], $data[0]["password"])) {
                     $_SESSION["username"] = $data[0]["username"];
-                    header("Location: /search/search_form");
+                    header("Location: {$this->base_url}/search/search_form");
                     return;
                 } else {
                     $error_msg = "Invalid Password";
@@ -53,7 +53,7 @@ class Account {
                 } 
 
                 $_SESSION["username"] = $_POST["username"];
-                header("Location: /search/search_form");
+                header("Location: {$this->base_url}/search/search_form");
                 return;
             }
         }
@@ -63,7 +63,7 @@ class Account {
 
     private function logout() {          
         session_destroy();
-        header("Location: /account/login");
+        header("Location: {$this->base_url}");
     }
 
     public function recentSearch() {
