@@ -30,5 +30,6 @@ if (isset($_GET["page"])) {
   $parts[0] = $_GET["page"];
   $parts[1] = $_GET["action"];
 }
+
 $main = new Main();
 $main->run($parts);

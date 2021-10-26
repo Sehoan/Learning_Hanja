@@ -66,6 +66,7 @@ body {
 :root {
   --main-theme: rgb(18, 75, 142);
   --sub-theme: rgb(52, 98, 151, 0.6);
+  --highlight-theme: rgb(227, 147, 147, 0.82);
 }
 
 header {
@@ -297,6 +298,42 @@ footer div {
 }
 #result-header input {
   height: 2.5rem;
+}
+
+/*Wordbook Page specific*/
+#wordbook {
+  display: flex;
+  flex-flow: row wrap;
+}
+.letter-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.letter-card p:nth-child(2) {
+  padding: 2rem;
+  border-left: solid 2px var(--sub-theme);
+  font-size: 7rem;
+  font-weight: bold;
+  color: var(--main-theme);
+}
+
+.letter-card p:nth-child(3) {
+  border-top: solid 2px var(--highlight-theme);
+  padding-top: 0.5rem;
+  color: var(--highlight-theme);
+  width: min-content;
+}
+
+div.letter-card a:nth-child(1) {
+  visibility: hidden;
+  background: transparent;
+  border: none;
+  color: var(--highlight-theme);
+}
+div.letter-card:hover a:nth-child(1) {
+  visibility: visible;
 }
 
 @media only screen and (max-width: 768px) {

@@ -4,7 +4,11 @@ include('./database_connection.php');
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $db = new mysqli($dbserver, $dbuser, $dbpass, $dbdatabase);
 
+$db->query("drop table if exists favorites");
 $db->query("drop table if exists user;");
+$db->query("drop table if exists kanji;");
+$db->query("drop table if exists hanja");
+
 $db->query("create table user (
     id int not null auto_increment,
     username text not null,
@@ -13,7 +17,6 @@ $db->query("create table user (
 );
 
 
-$db->query("drop table if exists kanji;");
 $db->query("create table kanji(
   id int not null auto_increment,
   literal text not null,
@@ -24,7 +27,6 @@ $db->query("create table kanji(
   primary key (id));"
 );
 
-$db->query("drop table if exists hanja");
 $db->query("create table hanja(
   id int not null auto_increment,
   literal text not null,
@@ -38,8 +40,9 @@ $db->query("drop table if exists favorites");
 $db->query("create table favorites(
   user_id int not null,
   kanji_id int not null,
-  primary key (user_id, kanji_id)
-);"
+  primary key (user_id, kanji_id),
+  foreign key (user_id) references user(id),
+  foreign key (kanji_id) references kanji(id));"
 );
 
 $data = json_decode(file_get_contents("db_files/kanji.txt"),true);
