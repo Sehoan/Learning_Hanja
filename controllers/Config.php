@@ -4,8 +4,8 @@
  */
 
 class Config {
-  public $compID;
-  public $project;
+  public $compID; // computing id
+  public $project; // project name
 
   public function __construct() {
     $this->compID = "sc8zt";

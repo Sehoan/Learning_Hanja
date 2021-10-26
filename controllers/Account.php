@@ -37,12 +37,12 @@ class Account {
 
   public function login() {
     $error_msg = "";
-    if (isset($_POST["username"])) { /// validate the email coming in
+    if (isset($_POST["username"])) { // check if any username is in post object
       $data = $this->db->query("select * from user where username = ?;", "s", $_POST["username"]);
-      if ($data === false) { // error occurred while querying
+      if ($data === false) { // query failed
         $error_msg = "Error cheking for user";
       } else if (!empty($data)) { 
-        // validate the user's password
+        // query succeeded and an existing user's found, validate password
         if (password_verify($_POST["password"], $data[0]["password"])) {
           $_SESSION["username"] = $data[0]["username"];
           $_SESSION["user_id"] = $data[0]["id"];
@@ -52,12 +52,14 @@ class Account {
           $error_msg = "Invalid Password";
         }
       } else {
+        // query succeeded but no user's found, sign up a new user
         $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $insert = $this->db->query("insert into user (username, password) values (?, ?);", "ss", $_POST["username"], $hash);
         if ($insert === false) {
           $error_msg = "Error creating new user";
         } 
 
+        // create session obejcts to maintain user's state in the site
         $_SESSION["username"] = $_POST["username"];
         $id = $this->db->query("select max(id) from user");
         $id = $id[0]["max(id)"];
@@ -71,28 +73,34 @@ class Account {
   }
 
   private function logout() {          
-    session_destroy();
-    header("Location: {$this->base_url}/");
+    session_start(); // join existing session
+    session_destroy(); // destroy existing session
+    header("Location: {$this->base_url}/"); // redirect to home page
   }
 
   public function recentSearch() {
 
   }
+
   public function wordbook() {
     $error_msg = "";
+    // handle get request with its queries
     if (isset($_GET["command"]) && $_GET["command"] == "delete") {
+      // delete a character from the user's wordbook
       $delete = $this->db->query("delete from favorites where
         user_id={$_SESSION["user_id"]} and kanji_id={$_GET["kanji_id"]};");
       if ($delete == false) {
         $error_msg = "Failed to delete the character";
       }
     }
+    // retrieve a list of letters in the user's wordbook
     $userWordbook = $this->db->query(
       "select * from favorites 
       inner join kanji on kanji_id=id 
       where user_id={$_SESSION["user_id"]};");
 
     if (isset($_GET["command"]) && $_GET["command"] == "export") {
+      // export the user's wordbook in json
       foreach ($userWordbook as $k => $row) {
         unset($row["user_id"]);
         unset($row["kanji_id"]);

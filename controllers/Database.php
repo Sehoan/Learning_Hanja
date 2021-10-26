@@ -8,7 +8,7 @@ class Database {
   private $mysqli;
 
   public function __construct() {
-    include('./database_connection.php');
+    include('./database_connection.php'); // database config
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     $this->mysqli = new mysqli($dbserver, $dbuser, $dbpass, $dbdatabase);
   }
@@ -20,11 +20,11 @@ class Database {
       $stmt->bind_param($types, ...$params);
 
     if (!$stmt->execute()) {
-      // execute failed
+      // query failed
       return false;
     }
 
-    // execute succeeded
+    // query succeeded
     if (($res = $stmt->get_result()) !== false) 
       return $res->fetch_all(MYSQLI_ASSOC);
 

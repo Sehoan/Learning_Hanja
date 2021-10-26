@@ -16,6 +16,7 @@ class Search {
   }
 
   public function run($action) {
+    // run appropriate functions based on the action passed in
     switch($action) {
     case "search_form":
       $this->searchForm();
@@ -36,19 +37,23 @@ class Search {
 
   public function searchResult() {
     $error_msg = "";
+    // handle adding to wordbook action
     if (isset($_POST["user_id"]) && isset($_POST["kanji_id"])) {
       $insert = $this->db->query("insert into favorites (user_id, kanji_id) values (?,?);",
         "ii", $_POST["user_id"], $_POST["kanji_id"]);
 
-      if ($insert == false) {
+      if ($insert == false) { // insert query failed
         $error_msg = "Failed to add a character to your wordbook";
       }
     }
+
+    // retrieve letters already present in the user's wordbook
     $result = $this->db->query("select kanji_id from favorites where user_id={$_SESSION["user_id"]};");
     $addedLetters = array();
     foreach($result as $row) {
       array_push($addedLetters, $row["kanji_id"]);
     }
+    // use search keyword to query search results
     $keyword = $_POST["keyword"];
     $result = $this->db->query(
       "select *, k.id as kanji_id from hanja h inner join kanji k 

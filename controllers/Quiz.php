@@ -12,7 +12,7 @@ class Quiz {
     }
 
     public function run($action) {
-
+      // run appropriate actions accordingly
         switch($action) {
             case "quiz_form":
                 $this->quizForm();

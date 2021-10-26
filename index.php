@@ -11,6 +11,7 @@ spl_autoload_register(function($classname) {
 // Join session or start one
 session_start();
 
+// general config option for setting base_url
 $config = new Config();
 $base_url = $config->getURL();
 // Parse the URL
@@ -22,20 +23,12 @@ $parts = explode("/", $path);
 // parts[0] => determines which controller (account, search, quiz)
 // parts[1] => determines which action/page
 
-
-// If the user's email is not set in the session, then it's not
-// a valid session (they didn't get here from the login page),
-// so we should send them over to log in first before doing
-// anything else!
+// if username is not set, user hasn't logged in yet, take him to the login page
 if (!isset($_SESSION["username"])) {
   $parts[0] = "account";
   $parts[1] = "login";
 }
 
-if (isset($_GET["page"])) {
-  $parts[0] = $_GET["page"];
-  $parts[1] = $_GET["action"];
-}
-
+// pass the parsed url to main controller
 $main = new Main();
 $main->run($parts);
