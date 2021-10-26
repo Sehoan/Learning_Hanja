@@ -63,7 +63,7 @@ class Account {
 
     private function logout() {          
         session_destroy();
-        header("Location: {$this->base_url}/account/login");
+        header("Location: {$this->base_url}");
     }
 
     public function recentSearch() {

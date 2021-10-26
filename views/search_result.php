@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/0604459c37.js"></script>
-  </head>
+    </head>
   <body>
     <!--Top Navigation / Header bar-->
     <header id="result-header">
@@ -57,25 +57,31 @@
     </header>
     <!--Main Content-->
     <section>
-      <div class="row search-entry">
+    <?php
+    if (empty($result)) {
+      echo "empty";
+    } else {
+      foreach($result as $row) {
+    ?>
+    <div class="row search-entry">
         <div class="col-3 left-col">
-          <h1 class="kanji"> 鶴 </h1>
+            <h1 class="kanji"><?=$row["literal"]?> </h1>
         </div>
         <div class="col-9 right-col">
           <div class="row inside-row">
             <div class="col-8">
-              <p class="result-text">21 strokes</p>
+            <p class="result-text"><?=$row["stroke_count"]?> strokes</p>
             </div>
           </div>
           <div class="row inside-row">
-            <p class="result-text">crane</p>
+          <p class="result-text"><?=$row["meaning_en"]?></p>
           </div>
           <div class="row inside-row">
             <div class="col-4">
-              <p class="result-text"> 日：つる, カク</p>
+            <p class="result-text"> 日：<?=$row["kun_yomi"]?></p>
             </div>
             <div class="col-4">
-              <p class="result-text">한: 두루미, 9, 학</p>
+            <p class="result-text">한: <?=$row["meaning_kr"]?></p>
             </div>
             <div class="col-4">
               <button type="button" class="btn btn-primary" name="button"> Add</button>
@@ -83,85 +89,9 @@
           </div>
         </div>
       </div>
-      <div class="row search-entry">
-        <div class="col-3 left-col">
-          <h1 class="kanji"> 鶴 </h1>
-        </div>
-        <div class="col-9 right-col">
-          <div class="row inside-row">
-            <div class="col-8">
-              <p class="result-text">21 strokes</p>
-            </div>
-          </div>
-          <div class="row inside-row">
-            <p class="result-text">crane</p>
-          </div>
-          <div class="row inside-row">
-            <div class="col-4">
-              <p class="result-text"> 日：つる, カク</p>
-            </div>
-            <div class="col-4">
-              <p class="result-text">한: 두루미, 9, 학</p>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-primary" name="button"> Add</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row search-entry">
-        <div class="col-3 left-col">
-          <h1 class="kanji"> 虐 </h1>
-        </div>
-        <div class="col-9 right-col">
-          <div class="row inside-row">
-            <div class="col-8">
-              <p class="result-text">9 strokes</p>
-            </div>
-          </div>
-          <div class="row inside-row">
-            <p class="result-text">tyrannize, oppress</p>
-          </div>
-          <div  class="row inside-row">
-            <div class="col-4">
-              <p class="result-text"> 日：しいた.げる, ギャク</p>
-            </div>
-            <div class="col-4">
-              <p class="result-text">한: 모질, 학</p>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-primary" name="button"> Add</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row search-entry">
-        <div class="col-3 left-col">
-          <h1 class="kanji"> 虐 </h1>
-        </div>
-        <div class="col-9 right-col">
-          <div class="row inside-row">
-            <div class="col-8">
-              <p class="result-text">9 strokes</p>
-            </div>
-          </div>
-          <div class="row inside-row">
-            <p class="result-text">tyrannize, oppress</p>
-          </div>
-          <div  class="row inside-row">
-            <div class="col-4">
-              <p class="result-text"> 日：しいた.げる, ギャク</p>
-            </div>
-            <div class="col-4">
-              <p class="result-text">한: 모질, 학</p>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-primary" name="button"> Add</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <?php
+      }}
+    ?>
     </section>
     <!--Footer-->
     <footer>

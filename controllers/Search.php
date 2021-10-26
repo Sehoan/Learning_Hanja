@@ -29,6 +29,7 @@ class Search {
 
     public function searchResult() {
         $keyword = $_POST["keyword"];
+        $result = $this->db->query("select * from hanja, kanji where hanja.literal=kanji.literal and sound=?", "s", $keyword);
         include "views/search_result.php";
     }
 }
