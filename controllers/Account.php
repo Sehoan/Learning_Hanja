@@ -85,7 +85,7 @@ class Account {
   }
 
   public function recentSearch() {
-    include ('view/recent_search.php');
+    include ('views/recent_search.php');
   }
 
   public function wordbook() {

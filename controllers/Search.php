@@ -7,24 +7,26 @@ class Search {
 
   private $db;
 
-  private $base_url = "/hanja_interpreter";
+  private $base_url;
 
   public function __construct() {
     $this->db = new Database();
+    $this->config = new Config();
+    $this->base_url = $this->config->getURL();
   }
 
   public function run($action) {
     // run appropriate functions based on the action passed in
     switch($action) {
-    case "search_form":
-      $this->searchForm();
-      break;
-    case "search_result":
-      $this->searchResult();
-      break;
-    default:
-      $this->searchForm();
-      break;
+      case "search_form":
+        $this->searchForm();
+        break;
+      case "search_result":
+        $this->searchResult();
+        break;
+      default:
+        $this->searchForm();
+        break;
     }
 
   }
@@ -65,7 +67,7 @@ class Search {
     $cookie = serialize($cookie);
 
     setcookie('recent',$cookie,time()+3600,'/');
-    
+
     $result = $this->db->query(
       "select *, k.id as kanji_id from hanja h inner join kanji k
       on h.literal=k.literal and sound=?;", "s", $keyword);

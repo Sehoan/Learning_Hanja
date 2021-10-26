@@ -62,22 +62,21 @@
         <p class="col-8 text-start fs-3" style="border-left: solid 5px var(--sub-theme);">Recent Searches</p>
       </div>
       <div id="recent_searches" class="w-100 mt-5">
-        //<?php
+        <?php
           if(array_key_exists('recent',$_COOKIE)){
             $cookie = $_COOKIE['recent'];
             $cookie = unserialize($cookie);
           } else{
-            $cookie = array()
+            $cookie = array();
           }
           foreach ($cookie as $x) {
             $x;
           ?>
-          <p><?=$error_msg?></p>
-          <div class="letter-card">
+          <div class="letter-card mt-4">
             <p >     <?= $x?>      </p>
           </div>
         <?php
-        //  }
+          }
         ?>
       </div>
     </section>
