@@ -1,0 +1,12 @@
+# Enable mod_rewrite engine
+RewriteEngine on
+RewriteBase /
+
+# Store the current location in an environment variable CWD
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^.*$ - [E=CWD:%2]
+
+# Rewrites to redirect everything to index.php if the file doesn't exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . %{ENV:CWD}index.php [L]
