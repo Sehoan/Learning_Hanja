@@ -30,7 +30,7 @@
           <ul>
             <li><a>Account</a></li>
             <li><a href="<?=$this->base_url?>/account/wordbook">My Wordbook</a></li>
-            <li><a>Recent Search</a></li>
+            <li><a href="<?=$this->base_url?>/account/recent_search">Recent Search</a></li>
             <li><a href="<?=$this->base_url?>/account/logout">Log Out</a></li>
           </ul>
         </div>
@@ -46,7 +46,7 @@
       </div>
       <div id="search-bar">
       <form action="<?=$this->base_url?>/search/search_result/" method="post">
-            <i class="fa fa-search fa-lg"></i>        
+            <i class="fa fa-search fa-lg"></i>
             <input type="text" name="keyword" placeholder="Search...">
         </form>
       </div>
@@ -60,7 +60,7 @@
     <section class="px-5">
       <div class="row w-100">
         <p class="col-8 text-start fs-3" style="border-left: solid 5px var(--sub-theme);">My Wordbook</p>
-          
+
           <p class="col-2 text-end fs-3">
             <a href="<?=$this->base_url?>/account/wordbook?command=export" style="color: var(--optional-theme)">
               Export to JSON ➜

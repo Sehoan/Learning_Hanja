@@ -30,7 +30,7 @@
           <ul>
             <li><a>Account</a></li>
             <li><a href="<?=$this->base_url?>/index.php?page=account&action=wordbook">My Wordbook</a></li>
-            <li><a>Recent Search</a></li>
+            <li><a href="<?=$this->base_url?>/account/recent_search">Recent Search</a></li>
             <li><a href="<?=$this->base_url?>/account/logout">Log Out</a></li>
           </ul>
         </div>
@@ -45,7 +45,7 @@
       </div>
       <div id="search-bar">
       <form action="<?=$this->base_url?>/search/search_result/" method="post">
-            <i class="fa fa-search fa-lg"></i>        
+            <i class="fa fa-search fa-lg"></i>
             <input type="text" name="keyword" placeholder="Search..." value="<?=$keyword?>">
         </form>
       </div>
