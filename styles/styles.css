@@ -67,6 +67,7 @@ body {
   --main-theme: rgb(18, 75, 142);
   --sub-theme: rgb(52, 98, 151, 0.6);
   --highlight-theme: rgb(227, 147, 147, 0.82);
+  --optional-theme: rgb(236, 182, 102, 1);
 }
 
 header {

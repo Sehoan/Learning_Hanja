@@ -60,7 +60,13 @@
     <section class="px-5">
       <div class="row w-100">
         <p class="col-8 text-start fs-3" style="border-left: solid 5px var(--sub-theme);">My Wordbook</p>
-        <p class="col-4 text-end fs-3" style="color: var(--highlight-theme)">Create Quiz ➜</p>
+          
+          <p class="col-2 text-end fs-3">
+            <a href="<?=$this->base_url?>/account/wordbook?command=export" style="color: var(--optional-theme)">
+              Export to JSON ➜
+            </a>
+          </p>
+        <p class="col-2 text-end fs-3" style="color: var(--highlight-theme)">Create Quiz ➜</p>
       </div>
       <div id="wordbook" class="w-100 mt-5">
         <?php

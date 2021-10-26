@@ -33,7 +33,7 @@ maintain state of the application on the server
     character to my wordbook)
     - [x] Users must be able to update and / or delete data stored in the database
     (*deleting saved character from my wordboook)
-- [ ] Implement at least one query that returns JSON instead of HTML
+- [x] Implement at least one query that returns JSON instead of HTML
     * Create a JSON report of my wordbook
 - Use good coding style
  - [ ] Make identifier names understandable 
@@ -49,12 +49,12 @@ maintain state of the application on the server
 - [x] Search and Search Result
     - [x] search form
     - [x] display search result
-- [ ] My Wordbook
+- [x] My Wordbook
     - [x] enable add button in search result page to actually add a character
     to the user's "my wordbook"
     - [x] display my wordbook page
     - [x] enable deleting a character from my wordbook page
-    - [ ] add a new "export to JSON" button to convert my wordbook into JSON report
+    - [x] add a new "export to JSON" button to convert my wordbook into JSON report
 - [ ] Username and Password validation (using regular expression)
     - [ ] username validataion (what are the rules?)
     - [ ] password validataion (what are the rules?)

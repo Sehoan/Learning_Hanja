@@ -86,6 +86,20 @@ class Account {
       "select * from favorites 
       inner join kanji on kanji_id=id 
       where user_id={$_SESSION["user_id"]};");
+
+    if (isset($_GET["command"]) && $_GET["command"] == "export") {
+      foreach ($userWordbook as $k => $row) {
+        unset($row["user_id"]);
+        unset($row["kanji_id"]);
+        unset($row["user_id"]);
+        $userWordbook[$k] = $row;
+        echo "\n";
+      }
+      $jsonReport = json_encode($userWordbook);
+      header('Content-Type: application/json; charset=utf-8');
+      echo $jsonReport;
+      return;
+    }
     include("views/wordbook.php");
   }
 }
