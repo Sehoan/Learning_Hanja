@@ -305,6 +305,19 @@ footer div {
   height: 2.5rem;
 }
 
+/* Recent Word Page specific */
+#recent_searches{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#recent_search_button{
+  background: none;
+ border: none;
+ padding: 20px;
+ font-size: 30px;
+ cursor: pointer;
+}
 /*Wordbook Page specific*/
 #wordbook {
   display: flex;

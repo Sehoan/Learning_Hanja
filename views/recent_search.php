@@ -72,8 +72,11 @@
           foreach ($cookie as $x) {
             $x;
           ?>
-          <div class="letter-card">
-            <p >     <?= $x?>      </p>
+          <div class="letter-card mt4" style='width: 18rem;'>
+            <form action="<?=$this->base_url?>/search/search_result" method="post">
+              <input type="hidden" name="keyword" value="<?=$x?>">
+              <button id="recent_search_button" type="submit" value="<?=$x?>"> <p style="font-size: 40px;"><?=$x?></p> </button>
+            </form>
           </div>
         <?php
           }

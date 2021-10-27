@@ -54,7 +54,7 @@ class Account {
       } else {
         // query succeeded but no user's found, sign up a new user
         $password = $_POST['password'];
-        if(preg_match( '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/', $password){
+        if( ! preg_match( '/^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/', $password)){
           $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
           $insert = $this->db->query("insert into user (username, password) values (?, ?);", "ss", $_POST["username"], $hash);
           if ($insert === false) {
