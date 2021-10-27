@@ -78,10 +78,10 @@
           </div>
           <div class="row inside-row">
             <div class="col-4">
-            <p class="result-text"> 日：<?=$row["kun_yomi"]?></p>
+            <p class="result-text"> 日：<?=$row['on_yomi'] . "      " . $row["kun_yomi"]?></p>
             </div>
             <div class="col-4">
-            <p class="result-text">한: <?=$row["meaning_kr"]?></p>
+            <p class="result-text">한: <?=$row['sound'] . '       ' . $row["meaning_kr"]?></p>
             </div>
             <div class="col-4">
               <form action="<?=$this->base_url?>/search/search_result" method="POST">
