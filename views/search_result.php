@@ -29,7 +29,7 @@
         <div id="menus">
           <ul>
             <li><a>Account</a></li>
-            <li><a href="<?=$this->base_url?>/index.php?page=account&action=wordbook">My Wordbook</a></li>
+            <li><a href="<?=$this->base_url?>/account/wordbook">My Wordbook</a></li>
             <li><a href="<?=$this->base_url?>/account/recent_search">Recent Search</a></li>
             <li><a href="<?=$this->base_url?>/account/logout">Log Out</a></li>
           </ul>
