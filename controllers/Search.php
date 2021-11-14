@@ -63,14 +63,24 @@ class Search {
       $cookie = array();
     }
 
-    $cookie[] = $keyword;
-    $cookie = serialize($cookie);
-
-    setcookie('recent',$cookie,time()+3600,'/');
+    // counts number of items in recent search history
+    $x = 0;
+    foreach($cookie as $search){
+      $x++;
+    }
+    // checks to see if recently was searched to avoid duplicates
+    if($cookie[$x-1] != $keyword){
+      $cookie[] = $keyword;
+      $cookie = serialize($cookie);
+      setcookie('recent',$cookie,time()+3600,'/');
+    }
 
     $result = $this->db->query(
       "select *, k.id as kanji_id from hanja h inner join kanji k
-      on h.literal=k.literal and sound=?;", "s", $keyword);
+      on h.literal=k.literal and (sound like ?) UNION select *, k.id as kanji_id from hanja h inner join kanji k
+      on h.literal=k.literal and (on_yomi like ?) UNION select *, k.id as kanji_id from hanja h inner join kanji k
+      on h.literal=k.literal and (k.literal like ?);", "sss", $keyword,$keyword,$keyword);
+
     include "views/search_result.php";
   }
 }
