@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/0604459c37.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   </head>
   <body>
     <!--Top Navigation / Header bar-->
@@ -46,10 +47,11 @@
       <h1><a href="<?=$this->base_url?>">英日韓 漢字 辞典</a></h1>
 
       <div id="search-bar">
-      <form action="<?=$this->base_url?>/search/search_result/" method="post">
-            <i class="fa fa-search fa-lg"></i>
-            <input type="text" name="keyword" placeholder="Search...">
+        <form action="<?=$this->base_url?>/search/search_result/" method="post">
+          <i class="fa fa-search fa-lg"></i>
+          <input type="text" name="keyword" placeholder="Search...">
         </form>
+        <p id="input-helper"></p>
       </div>
       <p id="welcome-msg">Search for any specific Chinese character or derived vocabulary!</p>
     </section>
@@ -61,5 +63,12 @@
           http://www.edrdg.org/enamdict/enamdict_doc.html</small>
       </div>
     </footer>
+    <script>
+      $("form input").change(() => {
+        $("#input-helper").html('press enter to complete search').css('color', 'var(--highlight-theme)')
+      }).focus(() => {
+        $("#input-helper").html('')
+      })
+    </script>
   </body>
 </html>
