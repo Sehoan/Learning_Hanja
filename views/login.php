@@ -36,7 +36,7 @@
       <p id="subheading">EN に한자じてん</p>
       <h1><a href="<?=$this->base_url?>">英日韓 漢字 辞典</a></h1>
 
-      <form id="login_form" action="<?=$this->base_url?>/account/login/" method="post">
+      <form id="login_form" name='login' action="<?=$this->base_url?>/account/login/" onsubmit="return validate();" method="post">
         <div>
           <label for="username">Username</label>
           <input type="text" id="username" name="username"/>
@@ -45,7 +45,7 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password"/>
         </div>
-        <div>                
+        <div>
           <button type="submit">Log in / Create Account</button>
         </div>
       </form>
@@ -62,5 +62,17 @@
         </small>
       </div>
     </footer>
+    <script>
+      function validate(){
+        let user = document.forms['login']['username'].value;
+        var reg = new RegExp("[ -~]");
+        if(!reg.test(user)){
+          alert("Please don't use unicode characters!!");
+          return false;
+        } else{
+          return true;
+        }
+      }
+    </script>
   </body>
 </html>

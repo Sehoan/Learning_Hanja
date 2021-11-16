@@ -40,7 +40,7 @@ class Account {
     if (isset($_POST["username"])) { // check if any username is in post object
       $data = $this->db->query("select * from user where username = ?;", "s", $_POST["username"]);
       if ($data === false) { // query failed
-        $error_msg = "Error cheking for user";
+        $error_msg = "Error checking for user";
       } else if (!empty($data)) {
         // query succeeded and an existing user's found, validate password
         if (password_verify($_POST["password"], $data[0]["password"])) {

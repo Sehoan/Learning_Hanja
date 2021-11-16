@@ -47,7 +47,7 @@
       <h1><a href="<?=$this->base_url?>">英日韓 漢字 辞典</a></h1>
 
       <div id="search-bar">
-        <form action="<?=$this->base_url?>/search/search_result/" method="post">
+        <form name='search' action="<?=$this->base_url?>/search/search_result/" onsubmit="return validateForm();" method="post">
           <i class="fa fa-search fa-lg"></i>
           <input type="text" name="keyword" placeholder="Search...">
         </form>
@@ -64,6 +64,17 @@
       </div>
     </footer>
     <script>
+      function validateForm(){
+        let form = document.forms['search']['keyword'].value;
+        var reg = new RegExp("[$&+,:;=?@#|'<>.^*()%!-]");
+        if( reg.test(form)){
+          alert("Don't put characters into the search!");
+          return false;
+        } else{
+          return true;
+        }
+      }
+
       $("form input").focusout(() => {
         $("#search-bar").append("<p id='input-helper' style='color: var(--highlight-theme)'>press enter to complete search</p>")
       }).focus(() => {

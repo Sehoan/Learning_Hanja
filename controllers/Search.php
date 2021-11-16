@@ -69,7 +69,7 @@ class Search {
       $x++;
     }
     // checks to see if recently was searched to avoid duplicates
-    if($cookie[$x-1] != $keyword){
+    if(count($cookie) != 0 && $cookie[$x-1] != $keyword){
       $cookie[] = $keyword;
       $cookie = serialize($cookie);
       setcookie('recent',$cookie,time()+3600,'/');
