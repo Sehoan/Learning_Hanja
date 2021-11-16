@@ -18,7 +18,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/0604459c37.js"></script>
-    </head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  </head>
   <body>
     <!--Top Navigation / Header bar-->
     <header id="result-header">
@@ -113,5 +114,18 @@
           http://www.edrdg.org/enamdict/enamdict_doc.html</small>
       </div>
     </footer>
+    <script>
+      $(".search-entry").mouseover(function() {
+        $(this).css({
+          'border': '4px solid var(--highlight-theme)',
+          'border-radius': '10px'
+        })
+      }).mouseleave(function() {
+        $(this).css({
+          'border': '',
+          'border-radius': ''
+        })
+      })
+    </script>
   </body>
 </html>

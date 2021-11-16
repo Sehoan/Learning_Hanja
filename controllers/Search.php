@@ -37,7 +37,7 @@ class Search {
 
   public function searchResult() {
     $error_msg = "";
-    // handle adding to wordbook action
+    // handle adding a letter to wordbook
     if (isset($_POST["user_id"]) && isset($_POST["kanji_id"])) {
       $insert = $this->db->query("insert into favorites (user_id, kanji_id) values (?,?);",
         "ii", $_POST["user_id"], $_POST["kanji_id"]);
