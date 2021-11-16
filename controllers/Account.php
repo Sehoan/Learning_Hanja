@@ -119,11 +119,6 @@ class Account {
       echo $jsonReport;
       return;
     }
-
-    if (isset($_GET["command"]) && $_GET["command"] == "preview") {
-      include("views/export_preview.php");
-      return;
-    }
     include("views/wordbook.php");
   }
 }

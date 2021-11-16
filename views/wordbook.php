@@ -63,8 +63,8 @@
         <p class="col-8 text-start fs-3" style="border-left: solid 5px var(--sub-theme);">My Wordbook</p>
 
           <p class="col-2 text-end fs-3">
-            <a href="<?=$this->base_url?>/account/wordbook?command=preview" style="color: var(--optional-theme)">
-              Preview JSON ➜
+            <a href="<?=$this->base_url?>/account/wordbook?command=export" style="color: var(--optional-theme)">
+              Export to JSON ➜
             </a>
           </p>
         <p class="col-2 text-end fs-3" style="color: var(--highlight-theme)">Create Quiz ➜</p>
@@ -73,7 +73,6 @@
         <?php
           foreach ($userWordbook as $row) {
             $literal = $row["literal"];
-            $meaning = $row["meaning_en"];
         ?>
           <p><?=$error_msg?></p>
           <div class="letter-card">
@@ -81,7 +80,6 @@
               <i class="fa fa-trash fa-2x"></i>
             </a>
             <p><?=$literal?></p>
-            <p><?=$meaning?></p>
           </div>
         <?php
           }
@@ -116,6 +114,20 @@
       })
 
       // ajax here
+      let wordbookJSON;
+      $.getJSON("?account&command=export", (result) => {
+        wordbookJSON = result;
+      });
+
+      let lettercard
+      $(".letter-card").mouseenter(function() {
+        const href = $(this).find("a").prop("href")
+        const id = href.substring(href.indexOf("id=")).substring(3);
+        lettercard = wordbookJSON.find(let => String(let.id) === id)
+        $(this).append(`<p class="letter-detail">${lettercard.meaning_en}</p><p class="letter-detail">${lettercard.stroke_count} strokes</p>`)
+      }).mouseleave(function() {
+        $(".letter-detail").remove()
+      })
     </script>
   </body>
 </html>
