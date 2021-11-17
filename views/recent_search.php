@@ -73,7 +73,7 @@
             $cookie[$i];
           ?>
           <div class="letter-card mt4" style='width: 7rem;'>
-            <form action="<?=$this->base_url?>/search/search_result_ltd" onsubmit="return validateForm();" method="post">
+            <form name="search" action="<?=$this->base_url?>/search/search_result_ltd" onsubmit="return validateForm();" method="post">
               <input type="hidden" name="keyword" value="<?=$cookie[$i]?>">
               <button id="recent_search_button" type="submit" value="<?=$cookie[$i]?>"> <p class="recent_text" style="font-size: 40px;"><?=$cookie[$i]?></p> </button>
             </form>

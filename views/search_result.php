@@ -45,7 +45,7 @@
         </h1>
       </div>
       <div id="search-bar">
-      <form action="<?=$this->base_url?>/search/search_result/" onsubmit="return validateForm();" method="post">
+      <form name="search" action="<?=$this->base_url?>/search/search_result/" onsubmit="return validateForm();" method="post">
             <i class="fa fa-search fa-lg"></i>
             <input type="text" name="keyword" placeholder="Search..." value="<?=$keyword?>">
         </form>
