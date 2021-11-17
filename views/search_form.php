@@ -75,6 +75,7 @@
         }
       }
 
+      // inform users if they forgot to press enter for submitting a form
       $("form input").focusout(() => {
         $("#search-bar").append("<p id='input-helper' style='color: var(--highlight-theme)'>press enter to complete search</p>")
       }).focus(() => {
