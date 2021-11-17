@@ -95,6 +95,7 @@
       </div>
     </footer>
     <script>
+      // highlight a letter on hover
       $(".letter-card").mouseover(function() {
         $(this).css({
           'border-top': '4px solid var(--highlight-theme)',
@@ -107,18 +108,19 @@
         })
       })
 
-      // confirm deletion
+      // confirm deletion before actually deleting the letter from wordbook
       $(".letter-card a").click(() => {
         const decision = confirm('are you sure you want to delete?')
         return decision;
       })
 
-      // ajax here
+      // ajax request to fetch stroke count data
       let wordbookJSON;
       $.getJSON("?account&command=export", (result) => {
         wordbookJSON = result;
       });
 
+      // display the letter's stroke count when hovered using the json fetched.
       let lettercard
       $(".letter-card").mouseenter(function() {
         const href = $(this).find("a").prop("href")

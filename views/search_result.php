@@ -115,12 +115,12 @@
       </div>
     </footer>
     <script>
-      $(".search-entry").mouseover(function() {
+      $(".search-entry").mouseover(function() { // Highlight a letter on hover
         $(this).css({
           'border': '4px solid var(--highlight-theme)',
           'border-radius': '10px'
         })
-      }).mouseleave(function() {
+      }).mouseleave(function() { // remove the effect when the mouse leaves
         $(this).css({
           'border': '',
           'border-radius': ''
