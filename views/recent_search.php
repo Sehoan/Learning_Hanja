@@ -84,13 +84,13 @@
       </div>
     </section>
     <script>
-      let element = document.getElementsByClassName('recent_text');
+      let element = document.getElementsByClassName('recent_text'); // selects all recent text entries
       for(var i = 0; i < element.length; i++){
-        element[i].addEventListener("mouseover", function(){
+        element[i].addEventListener("mouseover", function(){  //changes the color of text to red and bolds on mousehover
           this.style.color = "#b33d3b";
           this.style.fontWeight = "bold";
         });
-        element[i].addEventListener("mouseleave", function(){
+        element[i].addEventListener("mouseleave", function(){ // reverts on mouseleave
           this.style.color = "";
           this.style.fontWeight = "normal";
         });

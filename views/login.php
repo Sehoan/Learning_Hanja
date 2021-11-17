@@ -63,11 +63,11 @@
       </div>
     </footer>
     <script>
-      function validate(){
+      function validate(){ //validates login form username
         let user = document.forms['login']['username'].value;
-        var reg = new RegExp("[ -~]");
+        var reg = new RegExp("[ -~]"); // checks all ASCii characters
         if(!reg.test(user)){
-          alert("Please don't use unicode characters!!");
+          alert("Please don't use unicode characters!!"); //non ascii characters are not allowed
           return false;
         } else{
           return true;

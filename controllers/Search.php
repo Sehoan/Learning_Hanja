@@ -91,6 +91,7 @@ class Search {
     include "views/search_result.php";
   }
 
+  // same as the search function but does not add to recent searches
   public function searchResultLtd() {
     $error_msg = "";
     // handle adding a letter to wordbook
@@ -112,7 +113,7 @@ class Search {
     // use search keyword to query search results
     $keyword = $_POST["keyword"];
 
-    $result = $this->db->query(
+    $result = $this->db->query( // joins result of on_yomi, korean sound, as well as the literal.
       "select *, k.id as kanji_id from hanja h inner join kanji k
       on h.literal=k.literal and (sound like ?) UNION select *, k.id as kanji_id from hanja h inner join kanji k
       on h.literal=k.literal and (on_yomi like ?) UNION select *, k.id as kanji_id from hanja h inner join kanji k

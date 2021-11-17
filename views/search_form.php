@@ -64,7 +64,7 @@
       </div>
     </footer>
     <script>
-      function validateForm(){
+      function validateForm(){ // validates to check whether there are special characters in the code 
         let form = document.forms['search']['keyword'].value;
         var reg = new RegExp("[$&+,:;=?@#|'<>.^*()%!-]");
         if( reg.test(form)){
