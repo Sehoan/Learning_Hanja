@@ -187,6 +187,7 @@ section #welcome-msg {
 }
 
 
+
 footer {
   position: fixed;
   bottom: 0;
@@ -309,6 +310,11 @@ footer div {
 #recent_searches{
   display: flex;
   flex-flow: row wrap;
+}
+
+.recent_text{
+  color: var(--sub-theme);
+  padding: 3px;
 }
 
 #recent_search_button{

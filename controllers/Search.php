@@ -21,6 +21,9 @@ class Search {
       case "search_form":
         $this->searchForm();
         break;
+      case "search_result_ltd":
+        $this->searchResultLtd();
+        break;
       case "search_result":
         $this->searchResult();
         break;
@@ -69,11 +72,45 @@ class Search {
       $x++;
     }
     // checks to see if recently was searched to avoid duplicates
-    if(count($cookie) != 0 && $cookie[$x-1] != $keyword){
+    if(count($cookie) <= 1){
+      $cookie[] = $keyword;
+      $cookie = serialize($cookie);
+      setcookie('recent',$cookie,time()+3600,'/');
+    } else if(count($cookie) > 1 && $cookie[$x-1] != $keyword){
       $cookie[] = $keyword;
       $cookie = serialize($cookie);
       setcookie('recent',$cookie,time()+3600,'/');
     }
+
+    $result = $this->db->query(
+      "select *, k.id as kanji_id from hanja h inner join kanji k
+      on h.literal=k.literal and (sound like ?) UNION select *, k.id as kanji_id from hanja h inner join kanji k
+      on h.literal=k.literal and (on_yomi like ?) UNION select *, k.id as kanji_id from hanja h inner join kanji k
+      on h.literal=k.literal and (k.literal like ?);", "sss", $keyword,$keyword,$keyword);
+
+    include "views/search_result.php";
+  }
+
+  public function searchResultLtd() {
+    $error_msg = "";
+    // handle adding a letter to wordbook
+    if (isset($_POST["user_id"]) && isset($_POST["kanji_id"])) {
+      $insert = $this->db->query("insert into favorites (user_id, kanji_id) values (?,?);",
+        "ii", $_POST["user_id"], $_POST["kanji_id"]);
+
+      if ($insert == false) { // insert query failed
+        $error_msg = "Failed to add a character to your wordbook";
+      }
+    }
+
+    // retrieve letters already present in the user's wordbook
+    $result = $this->db->query("select kanji_id from favorites where user_id={$_SESSION["user_id"]};");
+    $addedLetters = array();
+    foreach($result as $row) {
+      array_push($addedLetters, $row["kanji_id"]);
+    }
+    // use search keyword to query search results
+    $keyword = $_POST["keyword"];
 
     $result = $this->db->query(
       "select *, k.id as kanji_id from hanja h inner join kanji k

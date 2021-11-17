@@ -69,13 +69,13 @@
           } else{
             $cookie = array();
           }
-          foreach ($cookie as $x) {
-            $x;
+          for( $i = count($cookie)-1; $i >= 0; $i--){
+            $cookie[$i];
           ?>
-          <div class="letter-card mt4" style='width: 18rem;'>
-            <form action="<?=$this->base_url?>/search/search_result" method="post">
-              <input type="hidden" name="keyword" value="<?=$x?>">
-              <button id="recent_search_button" type="submit" value="<?=$x?>"> <p style="font-size: 40px;"><?=$x?></p> </button>
+          <div class="letter-card mt4" style='width: 7rem;'>
+            <form action="<?=$this->base_url?>/search/search_result_ltd" method="post">
+              <input type="hidden" name="keyword" value="<?=$cookie[$i]?>">
+              <button id="recent_search_button" type="submit" value="<?=$cookie[$i]?>"> <p class="recent_text" style="font-size: 40px;"><?=$cookie[$i]?></p> </button>
             </form>
           </div>
         <?php
@@ -83,6 +83,19 @@
         ?>
       </div>
     </section>
+    <script>
+      let element = document.getElementsByClassName('recent_text');
+      for(var i = 0; i < element.length; i++){
+        element[i].addEventListener("mouseover", function(){
+          this.style.color = "#b33d3b";
+          this.style.fontWeight = "bold";
+        });
+        element[i].addEventListener("mouseleave", function(){
+          this.style.color = "";
+          this.style.fontWeight = "normal";
+        });
+      }
+    </script>
     <!--Footer-->
     <footer>
       <div>
