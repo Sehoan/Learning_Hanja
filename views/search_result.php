@@ -45,7 +45,7 @@
         </h1>
       </div>
       <div id="search-bar">
-      <form action="<?=$this->base_url?>/search/search_result/" method="post">
+      <form action="<?=$this->base_url?>/search/search_result/" onsubmit="return validateForm();" method="post">
             <i class="fa fa-search fa-lg"></i>
             <input type="text" name="keyword" placeholder="Search..." value="<?=$keyword?>">
         </form>
@@ -115,6 +115,16 @@
       </div>
     </footer>
     <script>
+    function validateForm(){ // validates to check whether there are special characters in the code
+      let form = document.forms['search']['keyword'].value;
+      var reg = new RegExp("[$&+,:;=?@#|'<>.^*()%!-]");
+      if( reg.test(form)){
+        alert("Don't put characters into the search!");
+        return false;
+      } else{
+        return true;
+      }
+    }
       $(".search-entry").mouseover(function() { // Highlight a letter on hover
         $(this).css({
           'border': '4px solid var(--highlight-theme)',

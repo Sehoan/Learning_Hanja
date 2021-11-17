@@ -73,7 +73,7 @@
             $cookie[$i];
           ?>
           <div class="letter-card mt4" style='width: 7rem;'>
-            <form action="<?=$this->base_url?>/search/search_result_ltd" method="post">
+            <form action="<?=$this->base_url?>/search/search_result_ltd" onsubmit="return validateForm();" method="post">
               <input type="hidden" name="keyword" value="<?=$cookie[$i]?>">
               <button id="recent_search_button" type="submit" value="<?=$cookie[$i]?>"> <p class="recent_text" style="font-size: 40px;"><?=$cookie[$i]?></p> </button>
             </form>
@@ -84,6 +84,16 @@
       </div>
     </section>
     <script>
+      function validateForm(){ // validates to check whether there are special characters in the code
+        let form = document.forms['search']['keyword'].value;
+        var reg = new RegExp("[$&+,:;=?@#|'<>.^*()%!-]");
+        if( reg.test(form)){
+          alert("Don't put characters into the search!");
+          return false;
+        } else{
+          return true;
+        }
+      }
       let element = document.getElementsByClassName('recent_text'); // selects all recent text entries
       for(var i = 0; i < element.length; i++){
         element[i].addEventListener("mouseover", function(){  //changes the color of text to red and bolds on mousehover
