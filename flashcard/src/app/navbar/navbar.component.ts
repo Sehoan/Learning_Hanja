@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'navbar',
+  selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  username: string;
 
-  constructor() {
-    this.username = 'Ryu';
+  constructor() { }
+
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {}
 }
