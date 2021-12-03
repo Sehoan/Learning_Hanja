@@ -135,11 +135,22 @@ header span:hover {
 section {
   padding: 2rem 3rem;
 }
+
+section > div {
+  display: flex;
+  justify-content: space-between;
+}
+
 section h2 {
   font-size: 1.8rem;
   color: var(--sub-theme);
   border-left: solid 5px var(--sub-theme);
   padding-left: 10px;
+}
+
+section h2:nth-child(2) {
+  border: none;
+
 }
 section a {
   float: right;

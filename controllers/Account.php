@@ -2,6 +2,10 @@
 /*
  * Author(s): Sehoan Choi (sc8zt), Ryu Patterson (rjp5cc)
  */
+header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding");
+header("Access-Control-Max-Age: 1000");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT");
 
 class Account {
 
@@ -28,6 +32,9 @@ class Account {
       break;
     case "wordbook":
       $this->wordbook();
+      break;
+    case "export":
+      $this->exportWordbook();
       break;
     default:
       $this->login();
@@ -88,7 +95,25 @@ class Account {
     include ('views/recent_search.php');
   }
 
+  public function exportWordbook() {
+    $userWordbook = $this->db->query(
+      "select * from favorites
+      inner join kanji on kanji_id=id
+      where user_id={$_SESSION["user_id"]};");
+    foreach ($userWordbook as $k => $row) {
+      unset($row["user_id"]);
+      unset($row["kanji_id"]);
+      unset($row["user_id"]);
+      $userWordbook[$k] = $row;
+      echo "\n";
+    }
+    header('Content-Type: application/json; charset=utf-8');
+    $jsonReport = json_encode($userWordbook, JSON_PRETTY_PRINT);
+    echo $jsonReport;
+  }
+
   public function wordbook() {
+
     $error_msg = "";
     // handle get request with its queries
     if (isset($_GET["command"]) && $_GET["command"] == "delete") {
@@ -114,9 +139,8 @@ class Account {
         $userWordbook[$k] = $row;
         echo "\n";
       }
-      $jsonReport = json_encode($userWordbook);
       header('Content-Type: application/json; charset=utf-8');
-      echo $jsonReport;
+      $jsonReport = json_encode($userWordbook, JSON_PRETTY_PRINT);
       return;
     }
     include("views/wordbook.php");
