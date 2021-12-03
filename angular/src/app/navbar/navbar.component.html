@@ -1,0 +1,34 @@
+<header id="result-header">
+  <div id="header-logo">
+    <i class="fa fa-user-circle fa-2x"></i>
+    <p>{{ username }}</p>
+    <!--Hidden menu pop up-->
+    <div id="menus">
+      <ul>
+        <li><a href="<?=$this->base_url?>/account/wordbook">My Wordbook</a></li>
+        <li><a href="<?=$this->base_url?>/account/recent_search">Recent Search</a></li>
+        <li><a href="<?=$this->base_url?>/account/logout">Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--Extra elements in header-->
+  <div>
+    <p id="subheading">EN に한자じてん</p>
+    <h1 id="heading" class="text-center">
+      <a href="<?=$this->base_url?>">
+        英日韓 漢字 辞典
+      </a>
+    </h1>
+  </div>
+  <div id="search-bar">
+    <form name="search" action="<?=$this->base_url?>/search/search_result/" onsubmit="return validateForm();" method="post">
+      <i class="fa fa-search fa-lg"></i>
+      <input type="text" name="keyword" placeholder="Search...">
+    </form>
+  </div>
+  <p>
+  <span class="active-lang">EN</span> |
+  <span>JP</span> |
+  <span>KR</span>
+  </p>
+</header>

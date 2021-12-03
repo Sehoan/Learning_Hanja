@@ -1,0 +1,24 @@
+#options-container form {
+  padding: 3rem 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3rem;
+}
+
+#options-container form > div {
+  text-align: center;
+  width: 100%;
+  border-top: solid 2px var(--sub-theme);
+  padding-top: 1.5rem;
+  color: var(--main-theme);
+  font-size: 1.3rem;
+}
+
+#options-container div input {
+  text-align: left;
+  margin-top: 2rem;
+}
+
+#options-container div label {
+  color: black;
+}

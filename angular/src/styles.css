@@ -1,0 +1,393 @@
+/*
+ * Author(s): Sehoan Choi (sc8zt)
+ *
+ * http://meyerweb.com/eric/tools/css/reset/
+ *    v2.0 | 20110126
+ *       License: none (public domain)
+ *
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  font-family: 'Playfair Display', serif;
+}
+:root {
+  --main-theme: rgb(18, 75, 142);
+  --sub-theme: rgb(52, 98, 151, 0.6);
+  --highlight-theme: rgb(227, 147, 147, 0.82);
+  --optional-theme: rgb(236, 182, 102, 1);
+}
+
+header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding: 2.6rem 1.5rem;
+}
+#header-logo #menus {
+  display: none;
+}
+#header-logo:hover #menus {
+  display: block;
+}
+#menus {
+  position: absolute;
+  top: 73px;
+  border: solid var(--sub-theme);
+  color: var(--sub-theme);
+  padding: 10px 10px;
+  border-radius: 8px;
+  background-color: white;
+}
+#menus li {
+  border-left: solid var(--sub-theme);
+  margin-top: 4px;
+  padding: 8px;
+}
+#menus li:hover {
+  cursor: pointer;
+  color: var(--main-theme);
+  border-left-color: var(--main-theme);
+}
+#header-logo {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+#header-logo i {
+  color: var(--sub-theme);
+  cursor: pointer;
+  margin-right: 10px;
+}
+#header-logo i:hover {
+  color: var(--main-theme);
+}
+header p {
+  justify-self: end;
+  color: var(--sub-theme);
+  font-size: 1.5rem;
+}
+header span {
+  cursor: pointer;
+}
+header span:hover {
+  color: var(--main-theme);
+}
+.active-lang {
+  color: var(--main-theme);
+  font-weight: bold;
+}
+
+section {
+  padding: 2rem 3rem;
+}
+section h2 {
+  font-size: 1.8rem;
+  color: var(--sub-theme);
+  border-left: solid 5px var(--sub-theme);
+  padding-left: 10px;
+}
+section a {
+  float: right;
+  font-size: 1.5rem;
+  color: var(--highlight-theme);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  background-color: rgb(4, 61, 129, 0.54);
+  height: 50px;
+  padding: 1rem 2rem;
+}
+footer div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+#page-container{
+  position:relative;
+  min-height: 100vh;
+}
+#content-wrap{
+  padding-bottom: 90px;
+}
+
+/*Search Page specific*/
+#search-bar {
+  width: 60%;
+  margin: 4rem 0 6rem 0;
+  border: solid 2px var(--main-theme);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+#search-bar i {
+  color: var(--main-theme);
+  margin-left: 20px;
+  margin-right: 10px;
+}
+#search-bar input {
+  border: none;
+  height: 3.5rem;
+  padding: 10px;
+  font-size: 1.3rem;
+  color: var(--main-theme);
+}
+
+.left-col {
+  text-align: center;
+}
+.right-col{
+  border-left: solid 1px var(--sub-theme);
+  height: auto;
+  padding-left: 30px;
+}
+.result-text{
+  color: var(--sub-theme);
+  font-size: 20px;
+}
+.kanji{
+  font-size: 7rem;
+  font-weight: bold;
+  color: var(--main-theme);
+}
+.inside-row{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.search-entry{
+  width: 65%;
+  height: auto;
+  border-top: solid;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: var(--sub-theme);
+  padding: 10px;
+}
+
+#result-header {
+  display: grid;
+  grid-template-columns: 7rem 1fr 3fr 10rem;
+  justify-items: center;
+  align-items: end;
+  padding: 1rem 1.5rem;
+}
+
+#result-header div:nth-child(1) {
+  justify-self: start;
+}
+#result-header div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#result-header p:nth-child(4) {
+  padding-bottom: 10px;
+}
+
+#result-header #heading a {
+  color: var(--main-theme);
+  font-weight: bold;
+  font-size: 2rem;
+}
+#result-header #subheading {
+  font-size: 1rem;
+  letter-spacing: 10px;
+}
+
+#result-header #heading {
+  margin-top: 10px;
+}
+
+#result-header #search-bar {
+  margin: 0;
+}
+#result-header input {
+  height: 2.5rem;
+}
+
+/* Recent Word Page specific */
+#recent_searches{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.recent_text{
+  color: var(--sub-theme);
+  padding: 3px;
+}
+
+#recent_search_button{
+  background: none;
+ border: none;
+ padding: 20px;
+ font-size: 30px;
+ cursor: pointer;
+}
+/*Wordbook Page specific*/
+#wordbook {
+  display: flex;
+  flex-flow: row wrap;
+}
+.letter-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.letter-card p:nth-child(2) {
+  padding: 2rem;
+  border-left: solid 2px var(--sub-theme);
+  font-size: 7rem;
+  font-weight: bold;
+  color: var(--main-theme);
+}
+
+.letter-card p:nth-child(3) {
+  border-top: solid 2px var(--highlight-theme);
+  padding-top: 0.5rem;
+  color: var(--highlight-theme);
+  width: min-content;
+}
+
+div.letter-card a:nth-child(1) {
+  visibility: hidden;
+  background: transparent;
+  border: none;
+  color: var(--highlight-theme);
+}
+div.letter-card:hover a:nth-child(1) {
+  visibility: visible;
+}
+
+@media only screen and (max-width: 768px) {
+  header p {
+    font-size: 1rem;
+  }
+  #result-header {
+    grid-template-columns: 1.5fr 2fr 4fr;
+    padding-top: 2rem;
+  }
+  #result-header p:nth-child(4) {
+    display: none;
+  }
+  #result-header div:nth-child(2) #subheading {
+    display: none;
+  }
+  #result-header div:nth-child(2) #heading a {
+    font-size: 1rem;
+  }
+  section {
+    margin-top: 1rem;
+  }
+  section #subheading {
+    font-size: 2rem;
+    letter-spacing: 10px;
+  }
+  section h1 a {
+    font-size: 3rem;
+  }
+  section img {
+    width: 300px;
+  }
+  section #welcome-msg {
+    font-size: 1rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  .search-entry {
+    width: 95%;
+  }
+  .left-col {
+    text-align: center;
+    padding: 1rem 1rem 0 0;
+  }
+  .kanji{
+    font-size: 5.5rem;
+  }
+  .result-text {
+    font-size: 1rem;
+  }
+  #search-bar {
+    width: 90%;
+  }
+  #result-header #search-bar {
+    justify-self: end;
+    width: 90%;
+    height: 2rem;
+  }
+  #result-header #search-bar i {
+    color: var(--main-theme);
+    margin-left: 5px;
+  }
+  #result-header #search-bar input {
+    width: 100%;
+    height: 1rem;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    color: var(--main-theme);
+  }
+  footer {
+    font-size: 0.8rem;
+  }
+}

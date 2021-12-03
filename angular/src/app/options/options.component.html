@@ -1,0 +1,22 @@
+<div id="options-container">
+  <form #optionForm="ngForm" (ngSubmit)="startQuiz(optionForm.value)" >
+    <div id="term-container">
+      <h4>Term (front):</h4>
+      <div *ngFor="let option of options">
+        <label for="{{ option }}">{{ option }}</label>
+        <input ngModel type="checkbox" name="{{ option }}_front" value="{{ option }}"/>
+      </div>
+    </div>
+    <div id="definition-container">
+      <h4>Definition (back):</h4>
+      <div *ngFor="let option of options">
+        <label for="{{ option }}">{{ option }}</label>
+        <input ngModel type="checkbox" name="{{ option }}_back" value="{{ option }}"/>
+      </div>
+    </div>
+    <button type="submit">Start Quiz ➜</button>
+  </form>
+
+  <p>{{ optionForm.value.english_front | json}}</p>
+  <p>{{ front }}</p>
+</div>
