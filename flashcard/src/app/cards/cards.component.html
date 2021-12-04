@@ -1,9 +1,14 @@
-<div *ngFor="let card of cards" class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ card.literal }}</h5>
-    <p class="card-text">{{ card.on }}</p>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<section>
+  <div *ngFor="let card of cards" [ngStyle]="cardStyle" class="card" style="width: 18rem;">
+    <div [ngClass]="cardBodyClass">
+      <h2 class="card-title mb-4">{{ card.literal }}</h2>
+      <div *ngIf="!show_meaning">
+        <p class="card-text">on_yomi: {{ card.on_yomi }}</p>
+        <p class="card-text">kun_yomi: {{ card.kun_yomi }}</p>
+      </div>
+      <p *ngIf="show_meaning">Meaning: {{ card.meaning_en }}</p>
+      <button (click)="flipCards()" class="mt-4">flip</button>
+    </div>
   </div>
-</div>
-{{ cards | json }}
+</section>
+<a href="https://cs4640.cs.virginia.edu/sc8zt/learning_hanja/account/wordbook">Return</a>

@@ -1,4 +1,10 @@
-.cards-container {
-  border: solid 1px black;
-  width: fit-content;
+/*
+ * Author(s): Sehoan Choi (sc8zt), Ryu Patterson (rjp5cc)
+ */
+section {
+  display: flex;
+}
+
+.card {
+  margin: 0.5rem;
 }

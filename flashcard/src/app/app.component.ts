@@ -1,3 +1,6 @@
+/*
+ * Author(s): Sehoan Choi (sc8zt), Ryu Patterson (rjp5cc)
+ */
 import { Component } from '@angular/core';
 
 @Component({

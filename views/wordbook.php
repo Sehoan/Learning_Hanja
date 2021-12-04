@@ -67,7 +67,7 @@
               Export to JSON ➜
             </a>
           </p>
-        <p class="col-2 text-end fs-3" style="color: var(--highlight-theme)">Create Quiz ➜</p>
+        <a href="<?=$this->base_url?>/flashcard/dist/flashcard" class="col-2 text-end fs-3" style="color: var(--highlight-theme)">Create Quiz ➜</a>
       </div>
       <div id="wordbook" class="w-100 mt-5">
         <?php
