@@ -7,17 +7,13 @@ import { HttpService } from '../http.service';
   styleUrls: ['./cards.component.css'],
 })
 export class CardsComponent implements OnInit {
+  public cards: Array<any> = [];
+
   constructor(private httpService: HttpService) {
-    this.httpService
-      .getWordbook()
-      .subscribe((response) => console.log(response));
+    this.httpService.getWordbook().subscribe((response) => {
+      this.cards = response;
+    });
   }
 
   ngOnInit(): void {}
-
-  getMyWordbook(): void {
-    this.httpService
-      .getWordbook()
-      .subscribe((response) => console.log(response));
-  }
 }

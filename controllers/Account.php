@@ -2,10 +2,6 @@
 /*
  * Author(s): Sehoan Choi (sc8zt), Ryu Patterson (rjp5cc)
  */
-header("Access-Control-Allow-Origin: http://localhost:4200");
-header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding");
-header("Access-Control-Max-Age: 1000");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT");
 
 class Account {
 
@@ -32,9 +28,6 @@ class Account {
       break;
     case "wordbook":
       $this->wordbook();
-      break;
-    case "export":
-      $this->exportWordbook();
       break;
     default:
       $this->login();
@@ -108,8 +101,7 @@ class Account {
       echo "\n";
     }
     header('Content-Type: application/json; charset=utf-8');
-    $jsonReport = json_encode($userWordbook, JSON_PRETTY_PRINT);
-    echo $jsonReport;
+    echo json_encode($userWordbook, JSON_PRETTY_PRINT);
   }
 
   public function wordbook() {
@@ -141,6 +133,7 @@ class Account {
       }
       header('Content-Type: application/json; charset=utf-8');
       $jsonReport = json_encode($userWordbook, JSON_PRETTY_PRINT);
+      echo $jsonReport;
       return;
     }
     include("views/wordbook.php");
