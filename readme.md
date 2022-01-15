@@ -9,7 +9,6 @@
   <p align="center">
     Learn Hanja Today!
     <br />
-    <a href="https://cs4640.cs.virginia.edu/sc8zt/learning_hanja/">View Live</a>
   </p>
 </p>
 
